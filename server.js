@@ -1,5 +1,6 @@
 var express = require("express");
 var cors = require("cors");
+require("dotenv").config();
 
 var app = express();
 app.use(cors({ optionSuccessStatus: 200 })); // some legacy browsers choke on 204
