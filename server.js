@@ -21,7 +21,9 @@ app.get("/api/timestamp/:date_string?", function(req, res) {
   if (req.params.date_string === undefined) {
     date = new Date();
   } else if (isNaN(dateParse)) {
-    return res.json({ error: "Invalid Date" });
+    let unixDate = parseInt(req.params.date_string);
+    if (isNaN(unixDate)) return res.json({ error: "Invalid Date" });
+    else date = new Date(parseInt(req.params.date_string));
   } else {
     date = new Date(req.params.date_string);
   }
